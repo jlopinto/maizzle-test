@@ -1,0 +1,37 @@
+{% load heroicons %}
+
+{% for payin in payin_items %}
+<table class="bg-silvrV2-neutral100 w-full p-16 mt-8">
+  <tr>
+    <td>
+      <table class="w-full">
+        <tr>
+          <td class="leading-24 text-sm font-normal whitespace-nowrap">{% translate "Observed turnover:" %}
+            @{{ payin.revenue|moneyformat }} €
+          </td>
+          <td class="float-right leading-24 font-bold">@{{ payin.amount|moneyformat }} € (@{{ payin.revenue_share }}%)</td>
+        </tr>
+        <tr>
+          <td class="leading-24 text-xs font-normal text-neutral500 whitespace-nowrap">Le @{{payin.revenue_start_date}}
+          </td>
+          <td class="float-right leading-24 p-0 m-0">
+            <div class="flex text-xs text-neutral500 whitespace-nowrap p-0 m-0">
+              <div class="inline-block pr-6">@{{payin.contract_id}}</div>
+              <div class="inline-block">
+                {% if payin.is_stock %}
+                <img src="{% static 'mail/images/funding_stock.svg'%}" alt="funding stock" class="w-16 h-16"/>
+                {% elif payin.is_marketing %}
+                <img src="{% static 'mail/images/funding_marketing.svg'%}" alt="funding marketing" class="w-16 h-16"/>
+                {% elif payin.is_hybrid %}
+                {% heroicon_outline "bolt" class="h-16 w-16" %}
+                {% endif %}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+{% endfor %}

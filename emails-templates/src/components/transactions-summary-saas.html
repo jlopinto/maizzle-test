@@ -1,0 +1,14 @@
+{% for payin in payin_items %}
+<table class="bg-silvrV2-neutral100 w-full p-16 mt-8">
+  <tr>
+    <td>
+      <table class="w-full">
+        <tr>
+          <td class="leading-24">@{{ payin.notification_id }}</td>
+          <td class="float-right leading-24 font-bold">@{{ payin.amount|moneyformat }}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+{% endfor %}

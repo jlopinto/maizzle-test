@@ -1,0 +1,45 @@
+<table>
+	<tr>
+		<td>
+			<hr class="m-0 border-0 bg-silvrV2-neutral200 h-px w-full">
+		</td>
+	</tr>
+  {% for fine_print in fine_prints %}
+	<tr>
+    <td class="m-0 pt-24 text-xs font-normal text-silvrV2-neutral500 font-Gilroy">
+      @{{ fine_print }}
+		</td>
+	</tr>
+  {% endfor %}
+	<tr>
+		<td>
+			<p class="m-0 pt-24 text-xs font-normal text-silvrV2-neutral500 font-Gilroy">
+        © {% now 'Y' %} Silvr.
+        {% blocktrans trimmed %}
+				All rights reserved.
+				{% endblocktrans %}
+				{# Translators: this sentence is followed by the email address of the recipient. #}
+				{% blocktrans trimmed %}
+				This email is intended for
+				{% endblocktrans %}
+				<span class="text-silvrV2-blue400 hover:text-silvrV2-blue500  text-neutral500">@{{ recipient.email }}</span>.
+				{% blocktrans trimmed %}
+				Please ignore this email if you are not the intended recipient.
+				{% endblocktrans %}
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="pt-24">
+			<table class="w-full">
+				<tr>
+					<td>
+						<a href="https://www.linkedin.com/company/getsilvr/"><img src="{% static 'mail/images/linkedin.png' %}" class="h-20 w-20" alt="linkedin"></a>
+						<a href="https://www.facebook.com/getsilvr/" class="pl-10"><img src="{% static 'mail/images/facebook.png' %}" class="h-20 w-20" alt="facebook"></a>
+						<a href="https://twitter.com/silvrco" class="pl-10"><img src="{% static 'mail/images/twitter.png' %}" class="h-20 w-20" alt="twitter"></a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>

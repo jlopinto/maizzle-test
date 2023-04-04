@@ -1,0 +1,25 @@
+<table class="w-full leading-24">
+  <tr>
+    <td class="pt-32 sm:pt-24">
+      <h3 class="text-silvrV2-neutral900 font-bold m-0 font-Gilroy">
+        {% translate "The button doesn't work?" %}
+      </h3>
+      <p class="m-0 text-silvrV2-neutral900 font-normal py-8 font-Gilroy">
+        {% translate "You can copy and paste the following link in your web browser:" %}
+      </p>
+      <a href="@{{ button_link }}" class="text-silvrV2-blue400 hover:text-silvrV2-blue500 font-bold font-Gilroy">
+        @{{ button_link }}
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td class="sm:py-24 py-32">
+      <p class="m-0 text-silvrV2-neutral900 font-normal leading-24 font-Gilroy">
+        {# Translators: This is the signature of a notification email. #}
+        {% blocktrans trimmed %}
+        The Silvr team
+        {% endblocktrans %}
+      </p>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,36 @@
+{% for invoice in invoices %}
+  <div class="flex bg-silvrV2-neutral100 p-16 mt-8">
+    {% if invoice.is_approved %}
+      <img src="{% static 'mail/images/accepted.png' %}"
+          class="w-18 h-18 mt-10"
+          height="18"
+          width="18"
+          alt=""/>
+    {% else %}
+      <img src="{% static 'mail/images/refused.png' %}"
+          class="w-18 h-18 mt-10"
+          height="18"
+          width="18"
+          alt=""/>
+    {% endif %}
+    <div class="flex-1 text-xs ml-16">
+        <div class="text-sm font-bold leading-24 text-silvrV2-neutral900">@{{ invoice.file_name }}</div>
+        <div class="text-silvrV2-neutral500 leading-16">
+          {% blocktrans with upload_date=invoice.created|date:"SHORT_LITERAL_DATE_FORMAT" trimmed %}
+            Uploaded on @{{ upload_date }}
+          {% endblocktrans %}
+        </div>
+        {% if invoice.is_approved %}
+            <div class="mt-8 leading-16 font-bold text-silvrV2-neutral500">{% translate "The file has been approved." %}</div>
+            {% if invoice.risk_assessment_client_message %}
+              <div class="text-silvrV2-neutral500">@{{ invoice.risk_assessment_client_message }}</div>
+            {% endif %}
+        {% else %}
+          <div class="font-bold text-silvrV2-copper500 mt-8">@{{ invoice.get_rejection_cause_display }}</div>
+            {% if invoice.rejection_client_message %}
+              <div class="text-silvrV2-neutral500">@{{ invoice.rejection_client_message }}</div>
+            {% endif %}
+        {% endif %}
+    </div>
+  </div>
+{% endfor %}

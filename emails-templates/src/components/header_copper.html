@@ -1,0 +1,53 @@
+<table class="bg-silvrV2-copper400 w-full p-56 sm:p-32 sm:pb-0 sm:bg-none {{ page.backgroundClass || '' }} bg-right-bottom bg-no-repeat bg-contain text-white">
+    <tr class="w-full">
+        <td>
+            <table class="w-full">
+                <tr>
+                    <td class="w-1/2">
+                        <img src="{% static 'mail/images/logo_beige.png' %}" height="40px" alt="logo silvr">
+                    </td>
+                    <td class="w-1/2 text-right">
+                      <a href="{% translate 'https://www.silvr.co/en/faq' %}" class="text-white text-sm font-bold">
+                        {% translate "Visit the help center" %}
+                      </a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+          <h1 style="max-width: 420px;" class="sm:text-22px text-28px sm:leading-24 leading-40 font-Garnett font-normal m-0 mt-56">
+            {% blocktrans trimmed %}
+            {{{ page.title }}}
+            {% endblocktrans %}
+            </h1>
+        </td>
+    </tr>
+    <tr>
+        <td>
+          <h2 style="max-width: 340px;" class="text-base font-Gilroy font-normal leading-24 py-24 m-0">
+            {% blocktrans trimmed %}
+            {{ page.subtitle }}
+            {% endblocktrans %}
+          </h2>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a
+                href="@{{ button_link }}"
+                style="max-width:260px;"
+              class="inline-block sm:block py-16 px-24 rounded-sm leading-full text-base font-bold text-center no-underline text-white  bg-silvrV2-blue400 hover:bg-silvrV2-blue500 focus:outline-none focus:bg-silvrV2-blue400 shadow-sm">
+              {% blocktrans trimmed %}
+              {{{ page.button }}}
+              {% endblocktrans %}
+            </a>
+        </td>
+    </tr>
+    <tr class="hidden sm:block pt-40">
+        <td>
+          <img class="h-107" src="{% static 'mail/images/{{ page.mobileImage }}.png' %}">
+        </td>
+      </tr>
+</table>

@@ -1,0 +1,80 @@
+---
+title: "Your expenses have been processed"
+subtitle: "Click the link below to track the payment:"
+title_desktop_max_width: "390px"
+button: "See my expenses"
+backgroundClass: "bg-desktop-download"
+mobileImage: "header_mobile_download"
+---
+
+<extends src="src/layouts/master_v2.html">
+  <block name="template">
+    <table class="w-full font-Gilroy">
+      <tbody>
+        <tr>
+          <td align="center" class="w-full">
+            <table style="max-width: 680px;" class="sm:w-full">
+              <tr>
+                <td>
+                  <component src="src/components/header.html" what="@{{ first_name }}">
+                  </component>
+                  <table class="bg-white text-sm sm:p-32 sm:pt-40 p-56 pb-32">
+                    <tr class="w-full pb-32 sm:pb-24">
+                      <td>
+                        <h3 class="text-silvrV2-neutral900 font-bold leading-24 m-0">
+                          {% blocktrans with recipient_name=recipient.first_name|capfirst trimmed %}
+                              Hello @{{ recipient_name }},
+                          {% endblocktrans %}
+                        </h3>
+                        <p class="m-0 text-silvrV2-neutral900 font-normal leading-24 pt-8 pb-32 sm:pb-24">
+                          {% blocktrans trimmed %}
+                          The expenses uploaded on your client portal have been processed by our teams. Here are the details:
+                          {% endblocktrans %}
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <component src="src/components/invoices-validation-status-summary.html"></component>
+                        <table>
+                          <tr>
+                            <td class="leading-24">
+                              <p class="mt-32 font-bold">
+                                {% blocktrans trimmed %}
+                                As a reminder, here are some of terms and conditions:
+                                {% endblocktrans %}
+                              </p>
+                              <ul class="mt-8 pl-20 mb-0 pb-2">
+                                <li>{% translate "Files are uploaded as PDFs." %}</li>
+                                <li>{% translate "Document is an invoice (not a quote)." %}</li>
+                                <li>{% translate "The invoice includes a phone number, name and IBAN of the provider, your company name, an amount, an invoice date, and a due date." %}</li>
+                                <li>{% translate "The invoice is not past due." %}</li>
+                                <li>{% translate "The currency is the Euro (€)." %}</li>
+                                <li>{% translate "We do not pay split invoices." %}</li>
+                              </ul>
+                              <p class="my-32">
+                                {# Translators: This is the signature of a notification email. #}
+                                {% blocktrans trimmed %}
+                                The Silvr team
+                                {% endblocktrans %}
+                              </p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <component src="src/components/footer-silvr.html"></component>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </block>
+</extends>

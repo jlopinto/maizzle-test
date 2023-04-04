@@ -1,0 +1,52 @@
+<table class="bg-silvrV2-beige200 w-full p-56 sm:p-32 sm:pb-0 sm:bg-none {{ page.backgroundClass || '' }} bg-right-bottom bg-no-repeat bg-contain">
+  <tr class="w-full">
+    <td>
+      <table class="w-full">
+        <tr>
+          <td class="w-1/2">
+            <img src="{% static 'mail/images/logo_black.png' %}" height="40px" alt="logo silvr">
+          </td>
+          <if condition="page.showHelpLink">
+            <td class="w-1/2 text-right">
+              <a href="{% translate 'https://www.silvr.co/en/faq' %}" class="text-silvrV2-blue400 hover:text-silvrV2-blue500 text-sm font-bold font-Gilroy">{% translate "Visit the help center" %}</a>
+            </td>
+          </if>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h1 class="leading-40 text-28px sm:text-22px sm:leading-32 font-Garnett font-normal m-0 sm:mt-40 mt-56 w-title sm:w-title">
+        {% blocktrans trimmed %}
+        {{{page.title}}}
+        {% endblocktrans %}
+      </h1>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h2 style="max-width: 340px;" class="text-base font-Gilroy font-normal leading-24 py-24 m-0">
+        <if condition="page.subtitle !== ''">
+        {% blocktrans trimmed %}
+        {{{page.subtitle}}}
+        {% endblocktrans %}
+        </if>
+      </h2>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <if condition="page.button">
+        <a href="@@{{ button_link }}" style="max-width: 260px" class="inline-block sm:block py-16 px-24 rounded-sm leading-full text-base font-Gilroy font-bold text-center no-underline text-white bg-silvrV2-blue400 hover:bg-silvrV2-blue500 focus:outline-none focus:bg-silvrV2-blue400 shadow-sm">
+          {% translate "{{ page.button }}" %}
+        </a>
+      </if>
+    </td>
+  </tr>
+  <tr class="hidden sm:block pt-40">
+    <td>
+      <img class="h-107" src="{% static 'mail/images/{{ page.mobileImage }}.png' %}">
+    </td>
+  </tr>
+</table>

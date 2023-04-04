@@ -1,0 +1,574 @@
+{% load i18n static core_tags %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html>
+<html lang="undefined" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="x-apple-disable-message-reformatting">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+  <!--[if mso]>
+    <xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml>
+    <style>
+      td,th,div,p,a,h1,h2,h3,h4,h5,h6 {font-family: "Gilroy", Raleway, Verdana, Arial, sans-serif;}
+      sup {
+        font-size: 0.8em;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+        top: -0.5em;
+      }
+    </style>
+  <![endif]-->
+
+  
+      <style>
+        @font-face {
+          font-family: "Garnett";
+          src: local('Garnett-Medium'), url({% static 'mail/fonts/Garnett-Medium.otf' %}) format("opentype");
+          font-weight: 500;
+        }
+
+        @font-face {
+          font-family: 'Gilroy';
+          src: local('Gilroy-Medium'), url({% static 'mail/fonts/Gilroy-Medium.otf' %}) format('opentype');
+          font-weight: 400;
+        }
+
+        @font-face {
+          font-family: 'Gilroy';
+          src: local('Gilroy-Bold'), url({% static 'mail/fonts/Gilroy-Bold.otf' %}) format('opentype');
+          font-weight: 700;
+        }
+
+        .w-title {
+          width: 390px;
+        }
+
+        @media screen and (max-width: 600px) {
+          .sm-w-title {
+            width: 100%;
+          }
+        }
+
+        /* Your custom CSS resets for email */
+/*
+ * Here is where you can add your global email CSS resets.
+ *
+ * We use a custom, email-specific CSS reset, instead
+ * of Tailwind's web-optimized `base` layer.
+ *
+ * Styles defined here will be inlined.
+*/
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  line-height: 1;
+  border: 1px solid red
+}
+/* Tailwind CSS components */
+/**
+ * @import here any custom CSS components - that is, CSS that
+ * you'd want loaded before the Tailwind utilities, so the
+ * utilities can still override them.
+*/
+/* Tailwind CSS utility classes */
+.static {
+  position: static
+}
+.relative {
+  position: relative
+}
+.float-right {
+  float: right
+}
+.m-0 {
+  margin: 0
+}
+.my-32 {
+  margin-top: 32px;
+  margin-bottom: 32px
+}
+.mb-0 {
+  margin-bottom: 0
+}
+.mb-40 {
+  margin-bottom: 40px
+}
+.ml-16 {
+  margin-left: 16px
+}
+.mt-10 {
+  margin-top: 10px
+}
+.mt-32 {
+  margin-top: 32px
+}
+.mt-56 {
+  margin-top: 56px
+}
+.mt-8 {
+  margin-top: 8px
+}
+.block {
+  display: block
+}
+.inline-block {
+  display: inline-block
+}
+.flex {
+  display: flex
+}
+.table {
+  display: table
+}
+.hidden {
+  display: none
+}
+.h-16 {
+  height: 16px
+}
+.h-18 {
+  height: 18px
+}
+.h-20 {
+  height: 20px
+}
+.h-px {
+  height: 1px
+}
+.w-1-2 {
+  width: 50%
+}
+.w-16 {
+  width: 16px
+}
+.w-18 {
+  width: 18px
+}
+.w-20 {
+  width: 20px
+}
+.w-full {
+  width: 100%
+}
+.flex-1 {
+  flex: 1 1 0%
+}
+.whitespace-nowrap {
+  white-space: nowrap
+}
+.rounded-sm {
+  border-radius: 2px
+}
+.border-0 {
+  border-width: 0px
+}
+.bg-silvrV2-beige200 {
+  background-color: #FEF0E2
+}
+.bg-silvrV2-blue400 {
+  background-color: #0653E4
+}
+.bg-silvrV2-copper400 {
+  background-color: #DA532C
+}
+.bg-silvrV2-neutral100 {
+  background-color: #F6F6F6
+}
+.bg-silvrV2-neutral200 {
+  background-color: #ECEEF1
+}
+.bg-white {
+  background-color: #ffffff
+}
+.bg-contain {
+  background-size: contain
+}
+.bg-right-bottom {
+  background-position: right bottom
+}
+.bg-no-repeat {
+  background-repeat: no-repeat
+}
+.p-0 {
+  padding: 0
+}
+.p-16 {
+  padding: 16px
+}
+.p-56 {
+  padding: 56px
+}
+.px-24 {
+  padding-left: 24px;
+  padding-right: 24px
+}
+.py-16 {
+  padding-top: 16px;
+  padding-bottom: 16px
+}
+.py-24 {
+  padding-top: 24px;
+  padding-bottom: 24px
+}
+.py-32 {
+  padding-top: 32px;
+  padding-bottom: 32px
+}
+.py-8 {
+  padding-top: 8px;
+  padding-bottom: 8px
+}
+.pb-2 {
+  padding-bottom: 2px
+}
+.pb-32 {
+  padding-bottom: 32px
+}
+.pl-10 {
+  padding-left: 10px
+}
+.pl-20 {
+  padding-left: 20px
+}
+.pr-6 {
+  padding-right: 6px
+}
+.pt-24 {
+  padding-top: 24px
+}
+.pt-32 {
+  padding-top: 32px
+}
+.pt-40 {
+  padding-top: 40px
+}
+.pt-8 {
+  padding-top: 8px
+}
+.text-center {
+  text-align: center
+}
+.text-right {
+  text-align: right
+}
+.font-Garnett {
+  font-family: Garnett, Raleway, Verdana, Arial, sans-serif
+}
+.font-Gilroy {
+  font-family: Gilroy, Raleway, Verdana, Arial, sans-serif
+}
+.text-base {
+  font-size: 16px
+}
+.text-sm {
+  font-size: 14px
+}
+.text-xs {
+  font-size: 12px
+}
+.font-bold {
+  font-weight: 700
+}
+.font-normal {
+  font-weight: 400
+}
+.leading-16 {
+  line-height: 16px
+}
+.leading-24 {
+  line-height: 24px
+}
+.leading-40 {
+  line-height: 40px
+}
+.leading-full {
+  line-height: 100%
+}
+.text-silvrV2-blue400 {
+  color: #0653E4
+}
+.text-silvrV2-copper500 {
+  color: #B43511
+}
+.text-silvrV2-neutral500 {
+  color: #6B7280
+}
+.text-silvrV2-neutral900 {
+  color: #131010
+}
+.text-white {
+  color: #ffffff
+}
+.no-underline {
+  text-decoration-line: none
+}
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05)
+}
+/* Your custom utility classes */
+/*
+ * Here is where you can define your custom utility classes.
+ *
+ * We wrap them in the `utilities` @layer directive, so
+ * that Tailwind moves them to the correct location.
+ *
+ * More info:
+ * https://tailwindcss.com/docs/functions-and-directives#layer
+*/
+.hover-bg-silvrV2-blue500:hover {
+  background-color: #0038C0 !important
+}
+.hover-text-silvrV2-blue500:hover {
+  color: #0038C0 !important
+}
+.focus-bg-silvrV2-blue400:focus {
+  background-color: #0653E4 !important
+}
+.focus-outline-none:focus {
+  outline: 2px solid transparent !important;
+  outline-offset: 2px !important
+}
+@media (max-width: 600px) {
+  .sm-mt-40 {
+    margin-top: 40px !important
+  }
+  .sm-block {
+    display: block !important
+  }
+  .sm-w-full {
+    width: 100% !important
+  }
+  .sm-bg-none {
+    background-image: none !important
+  }
+  .sm-p-32 {
+    padding: 32px !important
+  }
+  .sm-py-24 {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important
+  }
+  .sm-pb-0 {
+    padding-bottom: 0 !important
+  }
+  .sm-pb-24 {
+    padding-bottom: 24px !important
+  }
+  .sm-pt-24 {
+    padding-top: 24px !important
+  }
+  .sm-pt-40 {
+    padding-top: 40px !important
+  }
+  .sm-leading-24 {
+    line-height: 24px !important
+  }
+  .sm-leading-32 {
+    line-height: 32px !important
+  }
+}
+
+  </style>
+  
+</head>
+<body>
+  <div role="article" aria-roledescription="email" lang="{{ LANGUAGE_CODE }}" class="mb-40">
+    
+    <table class="w-full font-Gilroy" cellpadding="0" cellspacing="0" role="presentation">
+      <tbody>
+        <tr>
+          <td align="center" class="w-full">
+            <table style="max-width: 680px;" class="sm-w-full" cellpadding="0" cellspacing="0" role="presentation">
+              <tr>
+                <td>
+                  <table class="bg-silvrV2-beige200 w-full p-56 sm-p-32 sm-pb-0 sm-bg-none bg-desktop-download bg-right-bottom bg-no-repeat bg-contain" cellpadding="0" cellspacing="0" role="presentation">
+  <tr class="w-full">
+    <td>
+      <table class="w-full" cellpadding="0" cellspacing="0" role="presentation">
+        <tr>
+          <td class="w-1-2">
+            <img src="{% static 'mail/images/logo_black.png' %}" height="40px" alt="logo silvr">
+          </td>
+          
+            <td class="w-1-2 text-right">
+              <a href="{% translate 'https://www.silvr.co/en/faq' %}" class="text-silvrV2-blue400 hover-text-silvrV2-blue500 text-sm font-bold font-Gilroy">{% translate "Visit the help center" %}</a>
+            </td>
+          </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h1 class="leading-40 text-28px sm-text-22px sm-leading-32 font-Garnett font-normal m-0 sm-mt-40 mt-56 w-title sm-w-title">
+        {% blocktrans trimmed %}
+        Your expenses have been processed
+        {% endblocktrans %}
+      </h1>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h2 style="max-width: 340px;" class="text-base font-Gilroy font-normal leading-24 py-24 m-0">
+        
+        {% blocktrans trimmed %}
+        Click the link below to track the payment:
+        {% endblocktrans %}
+        </h2>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      
+        <a href="{{ button_link }}" style="max-width: 260px" class="inline-block sm-block py-16 px-24 rounded-sm leading-full text-base font-Gilroy font-bold text-center no-underline text-white bg-silvrV2-blue400 hover-bg-silvrV2-blue500 focus-outline-none focus-bg-silvrV2-blue400 shadow-sm">
+          {% translate "See my expenses" %}
+        </a>
+      </td>
+  </tr>
+  <tr class="hidden sm-block pt-40">
+    <td>
+      <img class="h-107" src="{% static 'mail/images/header_mobile_download.png' %}" alt="">
+    </td>
+  </tr>
+</table>
+
+                  <table class="bg-white text-sm sm-p-32 sm-pt-40 p-56 pb-32" cellpadding="0" cellspacing="0" role="presentation">
+                    <tr class="w-full pb-32 sm-pb-24">
+                      <td>
+                        <h3 class="text-silvrV2-neutral900 font-bold leading-24 m-0">
+                          {% blocktrans with recipient_name=recipient.first_name|capfirst trimmed %}
+                              Hello {{ recipient_name }},
+                          {% endblocktrans %}
+                        </h3>
+                        <p class="m-0 text-silvrV2-neutral900 font-normal leading-24 pt-8 pb-32 sm-pb-24">
+                          {% blocktrans trimmed %}
+                          The expenses uploaded on your client portal have been processed by our teams. Here are the details:
+                          {% endblocktrans %}
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        {% for invoice in invoices %}
+  <div class="flex bg-silvrV2-neutral100 p-16 mt-8">
+    {% if invoice.is_approved %}
+      <img src="{% static 'mail/images/accepted.png' %}" class="w-18 h-18 mt-10" height="18" width="18" alt="">
+    {% else %}
+      <img src="{% static 'mail/images/refused.png' %}" class="w-18 h-18 mt-10" height="18" width="18" alt="">
+    {% endif %}
+    <div class="flex-1 text-xs ml-16">
+        <div class="text-sm font-bold leading-24 text-silvrV2-neutral900">{{ invoice.file_name }}</div>
+        <div class="text-silvrV2-neutral500 leading-16">
+          {% blocktrans with upload_date=invoice.created|date:"SHORT_LITERAL_DATE_FORMAT" trimmed %}
+            Uploaded on {{ upload_date }}
+          {% endblocktrans %}
+        </div>
+        {% if invoice.is_approved %}
+            <div class="mt-8 leading-16 font-bold text-silvrV2-neutral500">{% translate "The file has been approved." %}</div>
+            {% if invoice.risk_assessment_client_message %}
+              <div class="text-silvrV2-neutral500">{{ invoice.risk_assessment_client_message }}</div>
+            {% endif %}
+        {% else %}
+          <div class="font-bold text-silvrV2-copper500 mt-8">{{ invoice.get_rejection_cause_display }}</div>
+            {% if invoice.rejection_client_message %}
+              <div class="text-silvrV2-neutral500">{{ invoice.rejection_client_message }}</div>
+            {% endif %}
+        {% endif %}
+    </div>
+  </div>
+{% endfor %}
+
+                        <table cellpadding="0" cellspacing="0" role="presentation">
+                          <tr>
+                            <td class="leading-24">
+                              <p class="mt-32 font-bold">
+                                {% blocktrans trimmed %}
+                                As a reminder, here are some of terms and conditions:
+                                {% endblocktrans %}
+                              </p>
+                              <ul class="mt-8 pl-20 mb-0 pb-2">
+                                <li>{% translate "Files are uploaded as PDFs." %}</li>
+                                <li>{% translate "Document is an invoice (not a quote)." %}</li>
+                                <li>{% translate "The invoice includes a phone number, name and IBAN of the provider, your company name, an amount, an invoice date, and a due date." %}</li>
+                                <li>{% translate "The invoice is not past due." %}</li>
+                                <li>{% translate "The currency is the Euro (€)." %}</li>
+                                <li>{% translate "We do not pay split invoices." %}</li>
+                              </ul>
+                              <p class="my-32">
+                                {# Translators: This is the signature of a notification email. #}
+                                {% blocktrans trimmed %}
+                                The Silvr team
+                                {% endblocktrans %}
+                              </p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <table cellpadding="0" cellspacing="0" role="presentation">
+	<tr>
+		<td>
+			<hr class="m-0 border-0 bg-silvrV2-neutral200 h-px w-full">
+		</td>
+	</tr>
+  {% for fine_print in fine_prints %}
+	<tr>
+    <td class="m-0 pt-24 text-xs font-normal text-silvrV2-neutral500 font-Gilroy">
+      {{ fine_print }}
+		</td>
+	</tr>
+  {% endfor %}
+	<tr>
+		<td>
+			<p class="m-0 pt-24 text-xs font-normal text-silvrV2-neutral500 font-Gilroy">
+        © {% now 'Y' %} Silvr.
+        {% blocktrans trimmed %}
+				All rights reserved.
+				{% endblocktrans %}
+				{# Translators: this sentence is followed by the email address of the recipient. #}
+				{% blocktrans trimmed %}
+				This email is intended for
+				{% endblocktrans %}
+				<span class="text-silvrV2-blue400 hover-text-silvrV2-blue500  text-neutral500">{{ recipient.email }}</span>.
+				{% blocktrans trimmed %}
+				Please ignore this email if you are not the intended recipient.
+				{% endblocktrans %}
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="pt-24">
+			<table class="w-full" cellpadding="0" cellspacing="0" role="presentation">
+				<tr>
+					<td>
+						<a href="https://www.linkedin.com/company/getsilvr/"><img src="{% static 'mail/images/linkedin.png' %}" class="h-20 w-20" alt="linkedin"></a>
+						<a href="https://www.facebook.com/getsilvr/" class="pl-10"><img src="{% static 'mail/images/facebook.png' %}" class="h-20 w-20" alt="facebook"></a>
+						<a href="https://twitter.com/silvrco" class="pl-10"><img src="{% static 'mail/images/twitter.png' %}" class="h-20 w-20" alt="twitter"></a>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
+</body>
+</html>
+
